@@ -1,14 +1,17 @@
 let loadMore = document.querySelector(".head button")
 let pokemon = document.querySelector("#pokemon")
+let Body = document.body
 let flipcardfront;
 let flipcardinner;
 let flipcard;
 let imgPoke;
+// let type;
 let temp = [];
 let offset = 0;
 
 //  let URL =`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`
 
+document.addEventListener("DOMContentLoaded",loadData)
 loadMore.addEventListener("click", loadData);
 
 function loadData() {
@@ -46,18 +49,27 @@ function showdata(data) {
 
         let fName = document.createElement("h1")
         fName.innerText = item.name
+        let type = document.createElement("h3")
+        
 
-        flipcardfront.append(imgPoke, fName)
+        flipcardfront.append(imgPoke, fName,type)
         flipcardinner.append(flipcardfront)
         flipcard.append(flipcardinner)
         pokemon.append(flipcard)
 
-        imgurl(item.url, imgPoke)
+        imgurl(item.url, imgPoke,type)
     });
 }
 
-function imgurl(url, imgelement) {
+function imgurl(url, imgelement,typee) {
     fetch(url)
         .then((response) => response.json())
-        .then((result) => imgelement.src = result.sprites.front_default)
+        .then((result) =>{
+            imgelement.src = result.sprites.front_default
+           typee.innerText = result.types[0].type.name
+// console.log(result.types[0].type.name);
+
+        console.log(result)
+            
+        } )
 }
