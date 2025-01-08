@@ -65,7 +65,7 @@ function imgurl(url, imgelement,typee) {
     fetch(url)
         .then((response) => response.json())
         .then((result) =>{
-            imgelement.src = result.sprites.front_default
+            imgelement.src = result.sprites.other.dream_world.front_default
            typee.innerText = result.types[0].type.name
 // console.log(result.types[0].type.name);
 

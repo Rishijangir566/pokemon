@@ -82,6 +82,7 @@
   .flip-card-front img{
     height: 200px;
     width: 250px;
+    padding: 10px;
   }
   
   /* Style the back side */
